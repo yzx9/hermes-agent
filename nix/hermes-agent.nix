@@ -15,11 +15,18 @@
   uv2nix,
   pyproject-nix,
   pyproject-build-systems,
+
+  dependency-groups ? [ "all" ],
 }:
 
 let
   hermesVenv = callPackage ./python.nix {
-    inherit uv2nix pyproject-nix pyproject-build-systems;
+    inherit
+      uv2nix
+      pyproject-nix
+      pyproject-build-systems
+      dependency-groups
+      ;
     python = python311;
   };
 
