@@ -8,6 +8,7 @@
   openssh,
   ffmpeg,
   tirith,
+  olm,
   stdenv,
   makeWrapper,
 
@@ -43,6 +44,8 @@ let
     openssh
     ffmpeg
     tirith
+  ] ++ lib.optionals (lib.elem "matrix" dependency-groups) [
+    olm
   ];
 
   runtimePath = lib.makeBinPath runtimeDeps;
